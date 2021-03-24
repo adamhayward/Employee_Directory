@@ -2,10 +2,11 @@ import React, {useState, useEffect} from "react";
 import "./App.css";
 import Nav from "./components/Nav.js";
 import Table from "./components/Table.js";
-// import API from "./utils/API.js";
+import API from "./utils/API.js";
 
 function App() {
   const [employeeData, setEmployeeData] = useState([]);
+
   useEffect(() => {
     API.getEmployeeData().then((res) => {
       const data = res.data.results;
