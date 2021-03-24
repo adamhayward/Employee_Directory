@@ -5,7 +5,6 @@ This application allows for quick access to information inside of an employee di
 
 <img  alt="sreenshot"  src="./public/images/screenshot.png"/>
 
-Visist the applications GitHub repo by [Clicking Here](https://github.com/adamhayward/Employee_Directory/).
 
 ## Usage
 Please visit the deployed site by [Clicking Here](https://adamhayward.github.io/Employee_Directory/).
