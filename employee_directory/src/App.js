@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import "./App.css";
+import Nav from "./components/Nav.js";
+import Table from "./components/Table.js";
+// import API from "./utils/API.js";
 
 function App() {
+  const [employeeData, setEmployeeData] = useState([]);
+  useEffect(() => {
+    API.getEmployeeData().then((res) => {
+      const data = res.data.results;
+      console.log(data);
+      const parsedEmployeeData = data.map((row, i) => {
+        return {
+          id: i,
+          name: `${row.name.first} ${row.name.last}`,
+          phone: row.phone,
+          email: row.email,
+          dob: new Date(row.dob.date).toLocaleDateString(),
+        };
+      });
+
+      setEmployeeData(parsedEmployeeData);
+    });
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Table rows={employeeData} />
     </div>
   );
 }
